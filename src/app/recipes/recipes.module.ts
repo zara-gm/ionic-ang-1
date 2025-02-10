@@ -1,27 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
-
 import { RecipesPageRoutingModule } from './recipes-routing.module';
-import { RecipesPage } from './recipes.page';
-
-const routes: Routes = [
-  {
-    path: '',
-    component: RecipesPage
-  }
-];
+import { RecipesService } from './recipes.service';  // Make sure this service is provided here
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    IonicModule,
     RecipesPageRoutingModule,
-    RecipesPage,
   ],
-  exports: [RecipesPage]
+  providers: [RecipesService],  // Add RecipesService to providers
 })
 export class RecipesPageModule {}
