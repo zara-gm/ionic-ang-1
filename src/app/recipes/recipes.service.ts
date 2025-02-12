@@ -7,24 +7,26 @@ import { Recipe } from './recipes.model';  // Import the Recipe interface
 export class RecipesService {
   private recipes: Recipe[] = [
     {
-      id: 'r1',
+      id: '1',
       title: 'Schnitzel',
       imageUrl: 'https://www.daringgourmet.com/wp-content/uploads/2014/03/Schnitzel-7_edited.jpg',
       ingredients: ['French Fries', 'Pork Meat', 'Salad']
     },
     {
-      id: 'r2',
+      id: '2',
       title: 'Spaghetti',
-      imageUrl: 'https://www.thespruceeats.com/thmb/8Z9g5L6b4j5j0wv4B7UJZQr9I8s=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/spaghetti-with-meat-sauce-3057819-10_preview-5b02a7f9ba61770036e1f8d0.jpeg',
+      imageUrl: 'https://s3-media0.fl.yelpcdn.com/bphoto/5LdzPCHC5c4nfyva8fiVgA/l.jpg',
       ingredients: ['Spaghetti', 'Meat', 'Tomatoes']
     }
   ];
 
   constructor() { }
 
-  getAllRecipes() {
-    return [...this.recipes];
+  getAllRecipes(): Recipe[] {
+    console.log('Fetching all recipes:', this.recipes);
+    return [...this.recipes]; // Return a copy to avoid mutations
   }
+  
 
   getRecipe(recipeId: string): Recipe {
     const foundRecipe = this.recipes.find(recipe => recipe.id === recipeId);

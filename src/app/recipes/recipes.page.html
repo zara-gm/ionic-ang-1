@@ -1,14 +1,14 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Recipes</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content>
   <ion-list>
-    <ion-item *ngFor="let recipe of recipes">
+    <ion-item *ngFor="let recipe of recipes" [routerLink]="['/recipes', recipe.id]">
       <ion-avatar slot="start">
-        <img [src]="recipe.imageUrl">
+        <img [src]="recipe.imageUrl || 'path/to/default-image.jpg'" />
       </ion-avatar>
       <ion-label>{{recipe.title}}</ion-label>
     </ion-item>
