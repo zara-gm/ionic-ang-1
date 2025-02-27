@@ -4,11 +4,11 @@ import { RecipesService } from './recipes.service';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RecipeItemComponent } from "./recipe-item/recipe-item.component";
 
 @Component({
   selector: 'app-recipes',
-  standalone: true,
-  imports: [IonicModule, CommonModule, RouterModule],
+  imports: [IonicModule, CommonModule, RouterModule, RecipeItemComponent],
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
 })
