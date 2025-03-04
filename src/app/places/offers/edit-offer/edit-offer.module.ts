@@ -13,8 +13,8 @@ import { EditOfferPage } from './edit-offer.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    EditOfferPageRoutingModule
+    EditOfferPageRoutingModule,
+    EditOfferPage
   ],
-  declarations: [EditOfferPage]
 })
-export class EditOfferPageModule {}
+export class EditOfferPageModule { }

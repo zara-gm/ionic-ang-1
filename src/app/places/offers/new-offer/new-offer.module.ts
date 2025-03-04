@@ -13,8 +13,8 @@ import { NewOfferPage } from './new-offer.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    NewOfferPageRoutingModule
+    NewOfferPageRoutingModule,
+    NewOfferPage
   ],
-  declarations: [NewOfferPage]
 })
-export class NewOfferPageModule {}
+export class NewOfferPageModule { }

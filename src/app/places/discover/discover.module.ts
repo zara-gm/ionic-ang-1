@@ -13,8 +13,8 @@ import { DiscoverPage } from './discover.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DiscoverPageRoutingModule
+    DiscoverPageRoutingModule,
+    DiscoverPage
   ],
-  declarations: [DiscoverPage]
 })
-export class DiscoverPageModule {}
+export class DiscoverPageModule { }

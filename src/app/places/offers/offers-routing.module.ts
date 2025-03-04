@@ -10,19 +10,15 @@ const routes: Routes = [
   },
   {
     path: 'new-offer',
-    loadChildren: () => import('./new-offer/new-offer.module').then( m => m.NewOfferPageModule)
+    loadChildren: () => import('./new-offer/new-offer.module').then(m => m.NewOfferPageModule)
   },
   {
     path: 'edit-offer',
-    loadChildren: () => import('./edit-offer/edit-offer.module').then( m => m.EditOfferPageModule)
-  },
-  {
-    path: 'place-bookings',
-    loadChildren: () => import('./place-bookings/place-bookings.module').then( m => m.PlaceBookingsPageModule)
+    loadChildren: () => import('./edit-offer/edit-offer.module').then(m => m.EditOfferPageModule)
   },
   {
     path: 'offer-bookings',
-    loadChildren: () => import('./offer-bookings/offer-bookings.module').then( m => m.OfferBookingsPageModule)
+    loadChildren: () => import('./offer-bookings/offer-bookings.module').then(m => m.OfferBookingsPageModule)
   }
 ];
 
@@ -30,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class OffersPageRoutingModule {}
+export class OffersPageRoutingModule { }
