@@ -8,6 +8,7 @@ import {
   RouteReuseStrategy,
   RouterLink,
   RouterLinkActive,
+  RouterModule
 } from '@angular/router';
 import { AppComponent } from './app.component';
 
@@ -24,4 +25,4 @@ import { AppComponent } from './app.component';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
