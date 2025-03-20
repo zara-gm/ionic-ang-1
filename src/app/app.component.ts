@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@capacitor/splash-screen';
 import { StatusBar } from '@capacitor/status-bar';
 import { AuthService } from './auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,10 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['app.component.scss'],
   standalone: false,
 })
+export class AppComponent implements OnInit, OnDestroy {
+  private authSub!: Subscription;
+  userIsAuthenticated = false;
 
-export class AppComponent {
   constructor(
     private platform: Platform,
     private authService: AuthService,
@@ -23,7 +26,6 @@ export class AppComponent {
 
   async initializeApp() {
     await this.platform.ready();
-
     try {
       await StatusBar.setOverlaysWebView({ overlay: false });
       await SplashScreen.hide();
@@ -32,12 +34,29 @@ export class AppComponent {
     }
   }
 
-  async onLogout() {
-    try {
-      await this.authService.logout();  // Ensure this method exists in AuthService
-      this.router.navigateByUrl('/auth', { replaceUrl: true });
-    } catch (error) {
-      console.error('Logout failed', error);
+  ngOnInit() {
+    // Subscribe to authentication state changes
+    this.authSub = this.authService.userIsAuthenticated.subscribe(
+      (isAuth) => {
+        this.userIsAuthenticated = isAuth;
+        if (!isAuth) {
+          // If not authenticated, navigate to login screen
+          this.router.navigateByUrl('/auth');
+        }
+      }
+    );
+  }
+
+  onLogout() {
+    // Handle logout
+    this.authService.logout();
+    this.router.navigateByUrl('/auth', { replaceUrl: true }); // Redirect to auth page after logout
+  }
+
+  ngOnDestroy() {
+    // Unsubscribe when component is destroyed
+    if (this.authSub) {
+      this.authSub.unsubscribe();
     }
   }
 }
