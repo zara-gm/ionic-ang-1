@@ -5,16 +5,23 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   private _userIsAuthenticated = false;
+
   get userIsAuthenticated() {
     return this._userIsAuthenticated;
   }
+
   constructor() { }
 
-  login = () => {
-    this._userIsAuthenticated = true;
-  };
+  async login(): Promise<boolean> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this._userIsAuthenticated = true;
+        resolve(true);
+      }, 1000); // Simulate network delay
+    });
+  }
 
-  logout = () => {
+  logout() {
     this._userIsAuthenticated = false;
-  };
+  }
 }

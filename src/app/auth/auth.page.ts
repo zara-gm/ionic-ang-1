@@ -3,22 +3,34 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.page.html',
   styleUrls: ['./auth.page.scss'],
-  imports: [IonicModule, CommonModule, FormsModule]
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule],
 })
 export class AuthPage implements OnInit {
-  [x: string]: any;
-  constructor(private authService: AuthService) { }
+  isLoading = false;
 
-  ngOnInit() {
-  }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  onLogin() {
-    this.authService.login();
-    this['router'].navigateByUrl('/places/tabs/discover');
+  ngOnInit() { }
+
+  async onLogin() {
+    this.isLoading = true;
+
+    try {
+      const success = await this.authService.login();
+      if (success) {
+        this.router.navigateByUrl('/places/tabs/discover');
+      }
+    } catch (error) {
+      console.error('Login failed:', error);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }
