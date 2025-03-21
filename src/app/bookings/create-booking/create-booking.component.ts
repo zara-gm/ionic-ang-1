@@ -12,7 +12,7 @@ import { Place } from '../../places/place.model';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 export class CreateBookingComponent implements OnInit {
-  @Input() selectedPlace: Place;
+  @Input() selectedPlace!: Place;
 
   constructor(private modalCtrl: ModalController) { }
 

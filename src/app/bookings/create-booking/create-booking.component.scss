@@ -1,0 +1,57 @@
+.place-detail-grid {
+    padding: 10px;
+    max-width: 1200px; /* Prevents the grid from stretching too far on large screens */
+    margin: 0 auto; /* Centers the grid */
+  }
+  
+  .place-image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .place-image {
+    width: 100%;
+    max-width: 400px; /* Limit the image size on smaller screens */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .place-description-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  @media (min-width: 768px) {
+    /* For iPad and tablets */
+    .place-detail-grid {
+      padding: 20px;
+    }
+  
+    .place-image {
+      max-width: 600px; /* Allow image to be larger on tablets */
+    }
+  
+    .place-description-col {
+      padding: 20px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    /* For desktops */
+    .place-detail-grid {
+      padding: 40px;
+    }
+  
+    .place-image {
+      max-width: 800px; /* Increase max-width on desktop */
+    }
+  
+    .place-description-col {
+      padding: 30px;
+    }
+  }
+  
