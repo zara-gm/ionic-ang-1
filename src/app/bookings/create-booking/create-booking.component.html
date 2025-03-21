@@ -10,18 +10,7 @@
 </ion-header>
 
 <ion-content class="ion-text-center" padding>
-  <ion-grid class="place-detail-grid">
-    <ion-row>
-      <!-- Image column -->
-      <ion-col size="12" size-md="6" class="place-image-col">
-        <img [src]="selectedPlace.imageUrl" alt="Place Image" class="place-image"/>
-      </ion-col>
-
-      <!-- Description column -->
-      <ion-col size="12" size-md="6" class="place-description-col">
-        <p>{{ selectedPlace.description }}</p>
-        <ion-button color="primary" (click)="onBookPlace()">Book!</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <img [src]="selectedPlace.imageUrl" alt="{{ selectedPlace.title }}" />
+  <p>{{ selectedPlace.description }}</p>
+  <ion-button color="primary" (click)="onBookPlace()">Book!</ion-button>
 </ion-content>
